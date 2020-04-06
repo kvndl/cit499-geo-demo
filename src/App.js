@@ -44,10 +44,10 @@ function App() {
     // grab current geo position
     let watcher = geo.watchPosition(onChange, onError, positionOptions);
 
-    let posXmin = "-86.20350";
-    let posXmax = "-86.20370";
-    let posYmin = "39.80170";
-    let posYmax = "39.80190";
+    let posXmin = "-86.203";
+    let posXmax = "-86.204";
+    let posYmin = "39.801";
+    let posYmax = "39.802";
 
     if (position.x >= posXmin && position.x <= posXmax && position.y >= posYmin && position.y <= posYmax) {
       setColor("green")
