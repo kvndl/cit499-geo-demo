@@ -25,6 +25,11 @@ function App() {
     setError(error.message);
   };
 
+  // const posXmin = "-86.203";
+  // const posXmax = "-86.204";
+  // const posYmin = "39.801";
+  // const posYmax = "39.802";
+
   // constantly checking for location to use in location
   React.useEffect( () => {
 
@@ -36,20 +41,10 @@ function App() {
       return;
     }
 
-    // watchPosition options
-    const positionOptions = {
-      enableHighAccuracy: true
-    }
-
     // grab current geo position
-    let watcher = geo.watchPosition(onChange, onError, positionOptions);
+    let watcher = geo.watchPosition(onChange, onError);
 
-    let posXmin = "-86.203";
-    let posXmax = "-86.204";
-    let posYmin = "39.801";
-    let posYmax = "39.802";
-
-    if (position.x >= posXmin && position.x <= posXmax && position.y >= posYmin && position.y <= posYmax) {
+    if (geo.x >= "-86.203" && position.x <= "-86.204" && position.y >= "39.801" && position.y <= "39.802") {
       setColor("green")
     } else {
       setColor("red")
@@ -59,7 +54,7 @@ function App() {
     return () => geo.clearWatch(watcher);
 
     // depends
-  }, []);
+  }, [position]);
 
   const hitBox = {
     height: "100px",
@@ -72,6 +67,14 @@ function App() {
     margin: "auto",
     padding: "20px"
   }
+
+  // const colorBox = () => {
+  //   if (position.x >= posXmin && position.x <= posXmax && position.y >= posYmin && position.y <= posYmax) {
+  //     setColor("green")
+  //   } else {
+  //     setColor("red")
+  //   }
+  // }
 
   return (
     <div style={center}>
