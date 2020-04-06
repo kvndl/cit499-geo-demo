@@ -36,8 +36,13 @@ function App() {
       return;
     }
 
+    // watchPosition options
+    const positionOptions = {
+      enableHighAccuracy: true
+    }
+
     // grab current geo position
-    let watcher = geo.watchPosition(onChange, onError);
+    let watcher = geo.watchPosition(onChange, onError, positionOptions);
 
     let posXmin = "-86.20350";
     let posXmax = "-86.20370";
