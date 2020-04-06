@@ -14,8 +14,8 @@ function App() {
   // https://www.w3schools.com/html/html5_geolocation.asp
   const onChange = ({coords}) => {
     setPosition({
-      x: coords.longitude,
-      y: coords.latitude,
+      x: coords.longitude.toFixed(5),
+      y: coords.latitude.toFixed(5),
       z: coords.altitude,
       accuracy: coords.accuracy
     })
@@ -39,7 +39,7 @@ function App() {
     // grab current geo position
     let watcher = geo.watchPosition(onChange, onError);
 
-    let posX = 39.801841485263;
+    let posX = -86.2035;
     let posY = -86.20357568277753;
 
     if (position.x === posX && position.y === posY) {
