@@ -14,8 +14,8 @@ function App() {
   // https://www.w3schools.com/html/html5_geolocation.asp
   const onChange = ({coords}) => {
     setPosition({
-      x: coords.latitude,
-      y: coords.longitude,
+      x: coords.longitude,
+      y: coords.latitude,
       z: coords.altitude,
       accuracy: coords.accuracy
     })
