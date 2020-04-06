@@ -1,24 +1,74 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  // holding X,Y coords
+  const [position, setPosition] = React.useState({});
+  // error handling
+  const [error, setError] = React.useState(null);
+  // hitbox color
+  const [color, setColor] = React.useState("red");
+
+  // watcher functions -- passing in params from coords object
+  // https://www.w3schools.com/html/html5_geolocation.asp
+  const onChange = ({coords}) => {
+    setPosition({
+      x: coords.latitude,
+      y: coords.longitude,
+      z: coords.altitude,
+      accuracy: coords.accuracy
+    })
+  }
+
+  const onError = (error) => {
+    setError(error.message);
+  };
+
+  // constantly checking for location to use in location
+  React.useEffect( () => {
+
+    const geo = navigator.geolocation;
+
+    if (!geo) {
+      setError("Geolocation not working");
+      // stop running if not working
+      return;
+    }
+
+    // grab current geo position
+    let watcher = geo.watchPosition(onChange, onError);
+
+    // prevent memory leaks
+    return () => geo.clearWatch(watcher);
+
+    // depends
+  }, []);
+
+  const hitBox = {
+    height: "100px",
+    width: "100px",
+    backgroundColor: color
+  }
+
+  const center = {
+    width: "50%",
+    margin: "auto",
+    padding: "20px"
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={center}>
+      <h3>Longitude: {position.x}</h3>
+      <h3>Latitude: {position.y}</h3> 
+      <h3>Accuracy: {position.accuracy}</h3>
+      <h3>Altitude: {position.z === null ? "No altitude info" : position.z}</h3>
+
+      {error}
+
+      <div style={hitBox}>
+
+      </div>
     </div>
   );
 }
