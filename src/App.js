@@ -39,6 +39,15 @@ function App() {
     // grab current geo position
     let watcher = geo.watchPosition(onChange, onError);
 
+    let posX = 39.801841485263;
+    let posY = -86.20357568277753;
+
+    if (position.x === posX && position.y === posY) {
+      setColor("green")
+    } else {
+      setColor("red")
+    }
+
     // prevent memory leaks
     return () => geo.clearWatch(watcher);
 
