@@ -21,7 +21,7 @@ function App() {
     });
 
     // change hitbox color based on location range
-    if ((coords.longitude <= posXmin && coords.latitude >= posXmax) && (coords.longitude >= posYmin && coords.longitude <= posYmax)) {
+    if ((coords.longitude <= posXmin || coords.latitude >= posXmax) && (coords.longitude >= posYmin || coords.longitude <= posYmax)) {
       setColor("green");
     } else {
       setColor("red");
