@@ -21,7 +21,7 @@ function App() {
     });
 
     // change hitbox color based on location range
-    if ((coords.longitude == homeX && coords.latitude == homeY)) {
+    if ((coords.longitude <= posXmin && coords.latitude >= posXmax) && (coords.longitude >= posYmin && coords.longitude <= posYmax)) {
       setColor("green");
     } else {
       setColor("red");
@@ -37,13 +37,13 @@ function App() {
     enableHighAccuracy: true
   }
 
-  // let posXmin = -86.203600;
-  // let posXmax = -86.203630;
-  // let posYmin = 39.802000;
-  // let posYmax = 39.802030;
+  let posXmin = -86.20392;
+  let posXmax = -86.20339;
+  let posYmin = 39.80190;
+  let posYmax = 39.80206;
 
-  let homeX = -86.203630;
-  let homeY = 39.802010;
+  // let homeX = -86.203630;
+  // let homeY = 39.802010;
 
   // constantly checking for location to use in location
   React.useEffect( () => {
