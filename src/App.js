@@ -20,6 +20,8 @@ function App() {
       accuracy: coords.accuracy
     });
 
+    console.log("minimum long " + posXmin)
+
     // change hitbox based on location range
     if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
       setColor("green");
