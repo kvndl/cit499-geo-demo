@@ -44,10 +44,10 @@ function App() {
     enableHighAccuracy: true
   }
 
-  let posXmin = -86.202;
-  let posXmax = -86.204;
-  let posYmin = 39.801;
-  let posYmax = 39.803;
+  let posXmin = -86.203600;
+  let posXmax = -86.203630;
+  let posYmin = 39.802000;
+  let posYmax = 39.802030;
 
   // constantly checking for location to use in location
   React.useEffect( () => {
