@@ -14,16 +14,21 @@ function App() {
   // https://www.w3schools.com/html/html5_geolocation.asp
   const onChange = ({coords}) => {
     setPosition({
-      x: coords.longitude.toFixed(5),
-      y: coords.latitude.toFixed(5),
+      x: coords.longitude,
+      y: coords.latitude,
       z: coords.altitude,
       accuracy: coords.accuracy
     });
 
     console.log("minimum long " + posXmin)
+    console.log("maximum long " + posXmax)
+    console.log("position.x " + coords.longitude)
+    console.log("minimum lat " + posYmin)
+    console.log("maximum lat " + posYmax)
+    console.log("position.y " + coords.latitude)
 
-    // change hitbox based on location range
-    if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
+    // change hitbox color based on location range
+    if (coords.longitude > posXmin && coords.longitude < posXmax && coords.latitude > posYmin && coords.latitude < posYmax) {
       setColor("green");
     } else {
       setColor("red");
@@ -39,10 +44,10 @@ function App() {
     enableHighAccuracy: true
   }
 
-  const posXmin = -86.2;
-  const posXmax = -86.3;
-  const posYmin = 39.8;
-  const posYmax = 39.9;
+  let posXmin = -86;
+  let posXmax = -87;
+  let posYmin = 38;
+  let posYmax = 40;
 
   // constantly checking for location to use in location
   React.useEffect( () => {
@@ -56,7 +61,7 @@ function App() {
     }
 
     // grab current geo position
-    let watcher = geo.watchPosition(onChange, onError, locationOptions);
+    let watcher = geo.watchPosition(onChange, onError);
 
     // prevent memory leaks
     return () => geo.clearWatch(watcher);
