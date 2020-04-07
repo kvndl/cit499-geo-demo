@@ -18,7 +18,14 @@ function App() {
       y: coords.latitude.toFixed(5),
       z: coords.altitude,
       accuracy: coords.accuracy
-    })
+    });
+
+    // change hitbox based on location range
+    if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
+      setColor("green");
+    } else {
+      setColor("red");
+    }
   }
 
   const onError = (error) => {
@@ -26,7 +33,7 @@ function App() {
   };
 
   const locationOptions = {
-    timeout: 1000,
+    // timeout: 1000,
     enableHighAccuracy: true
   }
 
@@ -46,18 +53,8 @@ function App() {
       return;
     }
 
-    // console.log(minX)
-
     // grab current geo position
     let watcher = geo.watchPosition(onChange, onError, locationOptions);
-
-    // console.log(watcher)
-
-    if ((geo.longitude >= posXmin && geo.longitude <= posXmax) && (geo.latitude >= posYmin && geo.latitude <= posYmax)) {
-      setColor("green");
-    } else {
-      setColor("red");
-    }
 
     // prevent memory leaks
     return () => geo.clearWatch(watcher);
@@ -77,14 +74,6 @@ function App() {
     padding: "20px"
   }
 
-  // const colorBox = (posX, posY) => {
-  //   if (posX >= posXmin && posX <= posXmax && posY >= posYmin && posY <= posYmax) {
-  //     setColor("green")
-  //   } else {
-  //     setColor("red")
-  //   }
-  // }
-
   return (
     <div style={center}>
       <h3>Longitude: {position.x}</h3>
@@ -94,8 +83,8 @@ function App() {
 
       {error}
 
-      <div style={hitBox}>
-      </div>
+      <div style={hitBox}/>
+
     </div>
   );
 }
