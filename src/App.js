@@ -20,13 +20,6 @@ function App() {
       accuracy: coords.accuracy
     });
 
-    console.log("minimum long " + posXmin)
-    console.log("maximum long " + posXmax)
-    console.log("coords.long " + coords.longitude)
-    console.log("minimum lat " + posYmin)
-    console.log("maximum lat " + posYmax)
-    console.log("coords.lat " + coords.latitude)
-
     // change hitbox color based on location range
     if ((coords.longitude == homeX && coords.latitude == homeY)) {
       setColor("green");
