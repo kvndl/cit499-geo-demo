@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 // Mapping Viewport
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {NavigationControl} from 'react-map-gl';
 require('dotenv').config()
 
 function App() {
@@ -14,12 +14,20 @@ function App() {
   const [color, setColor] = React.useState("red");
   // map viewport
   const [viewport, setViewport] = React.useState({
-    width: 400,
-    height: 400,
+    width: 500,
+    height: 500,
     latitude: 39.802010,
     longitude: -86.203630,
-    zoom: 8
+    zoom: 15
   });
+
+  let posXmin = -86.20392;
+  let posXmax = -86.20339;
+  let posYmin = 39.80190;
+  let posYmax = 39.80206;
+
+  // let posXmax = -86.2026
+  // let posYmax = 39.807
 
   // watcher functions -- passing in params from coords object
   // https://www.w3schools.com/html/html5_geolocation.asp
@@ -32,7 +40,7 @@ function App() {
     });
 
     // change hitbox color based on location range
-    if ((coords.longitude <= posXmin && coords.longitude >= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
+    if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
       setColor("green");
     } else {
       setColor("red");
@@ -47,11 +55,6 @@ function App() {
   //   // timeout: 1000,
   //   // enableHighAccuracy: true
   // }
-
-  let posXmin = -86.20392;
-  let posXmax = -86.20339;
-  let posYmin = 39.80190;
-  let posYmax = 39.80206;
 
   // let homeX = -86.203630;
   // let homeY = 39.802010;
@@ -88,6 +91,8 @@ function App() {
     padding: "20px"
   }
 
+  // const mapboxtoken = process.env.REACT_APP_MBToken;
+
   return (
     <div style={center}>
       <h3>Longitude: {position.x}</h3>
@@ -100,12 +105,15 @@ function App() {
       <div style={hitBox}/>
 
       <div>
-        {/* {mapper(position.y, position.x)} */}
         <ReactMapGL
         {...viewport}
         onViewportChange={setViewport}
-        mapboxApiAccessToken={process.env.MapboxAccessToken}
-        />
+        mapboxApiAccessToken={process.env.REACT_APP_MBToken}
+        >
+          <div style={{position: 'absolute', right: 0}}>
+          <NavigationControl />
+        </div>
+        </ReactMapGL>
       </div>
 
     </div>
