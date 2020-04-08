@@ -55,6 +55,10 @@ function App() {
     setError(error.message);
   };
 
+  const options = {
+    enableHighAccuracy: true
+  }
+
   // constantly checking for location to use in location
   React.useEffect( () => {
 
@@ -67,7 +71,7 @@ function App() {
     }
 
     // grab current geo position
-    let watcher = geo.watchPosition(onChange, onError);
+    let watcher = geo.watchPosition(onChange, onError, options);
 
     // prevent memory leaks
     return () => geo.clearWatch(watcher);
