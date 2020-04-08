@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+// Mapping Viewport
+import ReactMapGL from 'react-map-gl';
+require('dotenv').config()
 
 function App() {
 
@@ -9,6 +12,14 @@ function App() {
   const [error, setError] = React.useState(null);
   // hitbox color
   const [color, setColor] = React.useState("red");
+  // map viewport
+  const [viewport, setViewport] = React.useState({
+    width: 400,
+    height: 400,
+    latitude: 39.802010,
+    longitude: -86.203630,
+    zoom: 8
+  });
 
   // watcher functions -- passing in params from coords object
   // https://www.w3schools.com/html/html5_geolocation.asp
@@ -32,10 +43,10 @@ function App() {
     setError(error.message);
   };
 
-  const locationOptions = {
-    // timeout: 1000,
-    enableHighAccuracy: true
-  }
+  // const locationOptions = {
+  //   // timeout: 1000,
+  //   // enableHighAccuracy: true
+  // }
 
   let posXmin = -86.20392;
   let posXmax = -86.20339;
@@ -87,6 +98,15 @@ function App() {
       {error}
 
       <div style={hitBox}/>
+
+      <div>
+        {/* {mapper(position.y, position.x)} */}
+        <ReactMapGL
+        {...viewport}
+        onViewportChange={setViewport}
+        mapboxApiAccessToken={process.env.MapboxAccessToken}
+        />
+      </div>
 
     </div>
   );
