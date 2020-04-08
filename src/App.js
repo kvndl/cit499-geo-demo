@@ -14,8 +14,8 @@ function App() {
   const [color, setColor] = React.useState("red");
   // map viewport
   const [viewport, setViewport] = React.useState({
-    width: 500,
-    height: 500,
+    width: 300,
+    height: 300,
     latitude: 39.802010,
     longitude: -86.203630,
     zoom: 15
@@ -35,8 +35,8 @@ function App() {
   // https://www.w3schools.com/html/html5_geolocation.asp
   const onChange = ({coords}) => {
     setPosition({
-      x: coords.longitude,
-      y: coords.latitude,
+      x: coords.longitude.toFixed(5),
+      y: coords.latitude.toFixed(5),
       z: coords.altitude,
       accuracy: coords.accuracy
     });
@@ -54,14 +54,6 @@ function App() {
   const onError = (error) => {
     setError(error.message);
   };
-
-  // const locationOptions = {
-  //   // timeout: 1000,
-  //   // enableHighAccuracy: true
-  // }
-
-  // let homeX = -86.203630;
-  // let homeY = 39.802010;
 
   // constantly checking for location to use in location
   React.useEffect( () => {
@@ -93,7 +85,7 @@ function App() {
     width: "50%",
     margin: "auto",
     padding: "20px",
-    textAlign: "center"
+    // textAlign: "center"
   }
 
   return (
