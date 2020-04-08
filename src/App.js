@@ -20,6 +20,8 @@ function App() {
     longitude: -86.203630,
     zoom: 15
   });
+  // on arrival
+  const [arrive, setArrive] = React.useState(false);
 
   let posXmin = -86.20392;
   let posXmax = -86.20339;
@@ -42,8 +44,10 @@ function App() {
     // change hitbox color based on location range
     if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
       setColor("green");
+      setArrive(true);
     } else {
       setColor("red");
+      setArrive(false);
     }
   }
 
@@ -88,7 +92,8 @@ function App() {
   const center = {
     width: "50%",
     margin: "auto",
-    padding: "20px"
+    padding: "20px",
+    textAlign: "center"
   }
 
   return (
@@ -100,7 +105,11 @@ function App() {
 
       {error}
 
-      <div style={hitBox}/>
+      <div style={hitBox}>
+        <div style={center}>
+          {arrive ? "Arrived!" : "Not there yet."}
+        </div>
+      </div>
 
       <div>
         <ReactMapGL
