@@ -23,7 +23,7 @@ function App() {
 
   let posXmin = -86.20392;
   let posXmax = -86.20339;
-  let posYmin = 39.80190;
+  let posYmin = 39.80170;
   let posYmax = 39.80206;
 
   // let posXmax = -86.2026
@@ -90,8 +90,6 @@ function App() {
     margin: "auto",
     padding: "20px"
   }
-
-  // const mapboxtoken = process.env.REACT_APP_MBToken;
 
   return (
     <div style={center}>
