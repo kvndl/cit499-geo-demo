@@ -109,7 +109,7 @@ function App() {
           {arrive ? "Arrived!" : "Not there yet."}
         </div>
       </div>
-
+      <br/>
       <div>
         <ReactMapGL
         {...viewport}
@@ -124,7 +124,7 @@ function App() {
 
       {/* <div style={{height: "600px", width: "600px"}}>
         <GoogleMapReact
-          bootstrapURLKeys = {{key: "AIzaSyDmJaruOqOJ3wkpWuxuhrlpL2l4ZGz2KQk"}}
+          bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
           defaultCenter = {[29.9792, 31.1342]}
           defaultZoom = {5}
         >
