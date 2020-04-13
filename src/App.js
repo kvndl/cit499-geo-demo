@@ -2,7 +2,10 @@ import React from 'react';
 import './App.css';
 // Mapping Viewport
 import ReactMapGL, {NavigationControl} from 'react-map-gl';
-require('dotenv').config()
+require('dotenv').config();
+// Google Map React
+// import GoogleMapReact from 'google-map-react';
+// import Circle from './components/Circle';
 
 function App() {
 
@@ -114,10 +117,22 @@ function App() {
         mapboxApiAccessToken={process.env.REACT_APP_MBToken}
         >
           <div style={{position: 'absolute', right: 0}}>
-          <NavigationControl />
-        </div>
+            <NavigationControl />
+          </div>
         </ReactMapGL>
       </div>
+
+      {/* <div style={{height: "600px", width: "600px"}}>
+        <GoogleMapReact
+          bootstrapURLKeys = {{key: "AIzaSyDmJaruOqOJ3wkpWuxuhrlpL2l4ZGz2KQk"}}
+          defaultCenter = {[29.9792, 31.1342]}
+          defaultZoom = {5}
+        >
+
+          <Circle lat={29.9792} lng={31.1342}/>
+
+        </GoogleMapReact>
+      </div> */}
 
     </div>
   );
