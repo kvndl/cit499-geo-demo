@@ -1,6 +1,6 @@
 // require('dotenv').config();
 import React from 'react';
-import { Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Button, Container, Row, Col, Card, Form, FormControl} from 'react-bootstrap';
 
 // Mapbox Viewport
 // import ReactMapGL, {NavigationControl} from 'react-map-gl';
@@ -113,7 +113,7 @@ function Map() {
 
     return (
         <div style = {center}>
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col>
                         <Card className = "text-center">
@@ -122,8 +122,8 @@ function Map() {
                                 <Card.Text>
                                     <p>Longitude: {position.x === null ? "Unable to locate" : position.x}</p>
                                     <p>Latitude: {position.y === null ? "Unable to locate" : position.y}</p> 
-                                    <p>Accuracy: {position.accuracy === null ? "No accuracy info" : position.z}</p>
-                                    <p>Altitude: {position.z === null ? "No altitude info" : position.z}</p>
+                                    <p>Accuracy: {position.accuracy === null ? "No accuracy info" : position.accuracy}</p>
+                                    <p>Altitude: {position.altitude === null ? "No altitude info" : position.altitude}</p>
 
                                     {error}
 
@@ -140,6 +140,13 @@ function Map() {
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.651668, y: -73.759698})} block>Albany, New York</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.604148, y: -122.325591})} block>Seattle, Washington</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.280555, y: -83.742496})} block>Ann Arbor Michigan</Button>
+                                    <br/>
+                                    <Form block>
+                                            <FormControl type="text" placeholder="Longitude" required/>
+                                            <FormControl type="text" placeholder="Latitude" required/>
+                                            <br/>
+                                            <Button variant="outline-success" type="submit">Teleport</Button>
+                                        </Form>
                                 </div>
                             </Col>
                         </Row>
