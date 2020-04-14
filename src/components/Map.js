@@ -82,6 +82,7 @@ function Map() {
         return () => geo.clearWatch(watcher);
 
         // depends
+        // eslint-disable-next-line
     }, []);
 
     // const hitBox = {
