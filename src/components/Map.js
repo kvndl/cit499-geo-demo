@@ -18,13 +18,13 @@ function Map() {
     // hitbox color
     const [color, setColor] = React.useState("red");
     // map viewport
-    const [viewport, setViewport] = React.useState({
-        width: 300,
-        height: 300,
-        latitude: 39.802010,
-        longitude: -86.203630,
-        zoom: 15
-    });
+    // const [viewport, setViewport] = React.useState({
+    //     width: 300,
+    //     height: 300,
+    //     latitude: 39.802010,
+    //     longitude: -86.203630,
+    //     zoom: 15
+    // });
     // on arrival
     const [arrive, setArrive] = React.useState(false);
 
@@ -84,11 +84,11 @@ function Map() {
         // depends
     }, []);
 
-    const hitBox = {
-        height: "100px",
-        width: "100px",
-        backgroundColor: color,
-    }
+    // const hitBox = {
+    //     height: "100px",
+    //     width: "100px",
+    //     backgroundColor: color,
+    // }
 
     const center = {
         width: "50%",
