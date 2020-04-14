@@ -2,7 +2,7 @@ import React from 'react';
 // Bootstrap Depends
 import { Navbar, Image } from 'react-bootstrap';
 
-function Navvy() {
+function Navi() {
 
     return (
 
@@ -28,4 +28,4 @@ function Navvy() {
 
 }
 
-export default Navvy;
+export default Navi;

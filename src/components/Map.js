@@ -95,21 +95,11 @@ function Map() {
         // eslint-disable-next-line
     }, []);
 
-    // const hitBox = {
-    //     height: "100px",
-    //     width: "100px",
-    //     backgroundColor: color,
-    // }
-
     const center = {
         width: "50%",
         margin: "auto",
         padding: "20px",
     }
-
-    // const teleportHere = (x, y) => {
-    //     setTeleport({x: x, y: y})
-    // }
 
     return (
         <div style = {center}>
@@ -146,7 +136,7 @@ function Map() {
                                             <FormControl type="text" placeholder="Latitude" required/>
                                             <br/>
                                             <Button variant="outline-success" type="submit">Teleport</Button>
-                                        </Form>
+                                    </Form>
                                 </div>
                             </Col>
                         </Row>
