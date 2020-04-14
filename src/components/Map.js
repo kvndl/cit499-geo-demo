@@ -146,7 +146,7 @@ function Map() {
                             <GoogleMapReact
                                 bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
                                 // defaultCenter = {[teleport.x, teleport.y]}
-                                defaultZoom = {6}
+                                defaultZoom = {13}
                                 center = {[teleport.x, teleport.y]}
                             >
 
