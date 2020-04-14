@@ -120,9 +120,9 @@ function Map() {
                             <Card.Header>Location Details</Card.Header>
                             <Card.Body>
                                 <Card.Text>
-                                    <p>Longitude: {position.x}</p>
-                                    <p>Latitude: {position.y}</p> 
-                                    <p>Accuracy: {position.accuracy}</p>
+                                    <p>Longitude: {position.x === null ? "Unable to locate" : position.x}</p>
+                                    <p>Latitude: {position.y === null ? "Unable to locate" : position.y}</p> 
+                                    <p>Accuracy: {position.accuracy === null ? "No accuracy info" : position.z}</p>
                                     <p>Altitude: {position.z === null ? "No altitude info" : position.z}</p>
 
                                     {error}
@@ -136,7 +136,7 @@ function Map() {
                             <Col>
                                 <div>
                                     <h4 className="text-center">Teleportation Devices</h4>
-                                    <Button variant = "danger" size = "lg" onClick = { () => setTeleport({x: 39.773285, y: -86.174703})} block>Target</Button>
+                                    <Button variant = "danger" size = "lg" onClick = { () => setTeleport({x: 39.773285, y: -86.174703})} block>IUPUI Campus</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.651668, y: -73.759698})} block>Albany, New York</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.604148, y: -122.325591})} block>Seattle, Washington</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.280555, y: -83.742496})} block>Ann Arbor Michigan</Button>
@@ -145,18 +145,6 @@ function Map() {
                         </Row>
                     </Col>
                     <Col>
-                        {/* <div>
-                            <ReactMapGL
-                            {...viewport}
-                            onViewportChange={setViewport}
-                            mapboxApiAccessToken={process.env.REACT_APP_MBToken}
-                            >
-                                <div style={{position: 'absolute', right: 0}}>
-                                <NavigationControl />
-                                </div>
-                            </ReactMapGL>
-                        </div> */}
-
                         <div style={{height: "600px", width: "600px"}}>
                             <GoogleMapReact
                                 bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
