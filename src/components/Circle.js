@@ -16,7 +16,9 @@ function Circle(props) {
     }
 
     return(
-        <img src="https://i.ya-webdesign.com/images/transparent-live-animated-gif-3.gif" style={style} alt="map marker"></img>
+        <div>
+            <img src="https://i.ya-webdesign.com/images/transparent-live-animated-gif-3.gif" style={style} alt="map marker"/>
+        </div>
     )
 
 }
