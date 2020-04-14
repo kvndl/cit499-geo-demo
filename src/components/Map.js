@@ -137,9 +137,9 @@ function Map() {
                                 <div>
                                     <h4 className="text-center">Teleportation Devices</h4>
                                     <Button variant = "danger" size = "lg" onClick = { () => setTeleport({x: 39.773285, y: -86.174703})} block>Target</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 73.7562, y: 42.6526})} block>Albany, New York</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 122.3321, y: 47.6062})} block>Seattle, Washington</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 83.7430, y: 42.2808})} block>Ann Arbor Michigan</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.651668, y: -73.759698})} block>Albany, New York</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.604148, y: -122.325591})} block>Seattle, Washington</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.280555, y: -83.742496})} block>Ann Arbor Michigan</Button>
                                 </div>
                             </Col>
                         </Row>
