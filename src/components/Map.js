@@ -48,10 +48,10 @@ function Map() {
 
         // change hitbox color based on location range
         if ((coords.longitude >= posXmin && coords.longitude <= posXmax) && (coords.latitude >= posYmin && coords.latitude <= posYmax)) {
-            setColor("green");
+            setColor("success");
             setArrive(true);
         } else {
-            setColor("red");
+            setColor("danger");
             setArrive(false);
         }
     }
@@ -112,11 +112,7 @@ function Map() {
 
                                     {error}
 
-                                    <div style={hitBox}>
-                                        <div>
-                                            {arrive ? "Arrived!" : "Not there yet."}
-                                        </div>
-                                    </div>
+                                    <Button variant = {color}>{arrive ? "Arrived!" : "Not there yet."}</Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
