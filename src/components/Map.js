@@ -13,11 +13,20 @@ function Map() {
 
     // holding X,Y coords
     const [position, setPosition] = React.useState({});
+
     // error handling
     const [error, setError] = React.useState(null);
+
     // hitbox color
     const [color, setColor] = React.useState("red");
-    // map viewport
+
+    // map teleport
+    const [teleport, setTeleport] = React.useState({
+        x: 39.773309,
+        y: -86.174698, 
+    });
+
+    // mapbox viewport
     // const [viewport, setViewport] = React.useState({
     //     width: 300,
     //     height: 300,
@@ -25,6 +34,7 @@ function Map() {
     //     longitude: -86.203630,
     //     zoom: 15
     // });
+
     // on arrival
     const [arrive, setArrive] = React.useState(false);
 
@@ -97,6 +107,10 @@ function Map() {
         padding: "20px",
     }
 
+    // const teleportHere = (x, y) => {
+    //     setTeleport({x: x, y: y})
+    // }
+
     return (
         <div style = {center}>
             <Container>
@@ -121,10 +135,11 @@ function Map() {
                         <Row>
                             <Col>
                                 <div>
-                                    <Button variant = "danger" size = "lg" block>Target</Button>
-                                    <Button variant = "primary" size = "lg" block>Albany, New York</Button>
-                                    <Button variant = "primary" size = "lg" block>Seattle, Washington</Button>
-                                    <Button variant = "primary" size = "lg" block>Ann Arbor Michigan</Button>
+                                    <h4 className="text-center">Teleportation Devices</h4>
+                                    <Button variant = "danger" size = "lg" onClick = { () => setTeleport({x: 39.773285, y: -86.174703})} block>Target</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.6526, y: 73.7562})} block>Albany, New York</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.6062, y: 122.3321})} block>Seattle, Washington</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.2808, y: 83.7430})} block>Ann Arbor Michigan</Button>
                                 </div>
                             </Col>
                         </Row>
@@ -145,11 +160,12 @@ function Map() {
                         <div style={{height: "600px", width: "600px"}}>
                             <GoogleMapReact
                                 bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
-                                defaultCenter = {[29.9792, 31.1342]}
-                                defaultZoom = {5}
+                                // defaultCenter = {[teleport.x, teleport.y]}
+                                defaultZoom = {10}
+                                center = {[teleport.x, teleport.y]}
                             >
 
-                                <Circle lat={29.9792} lng={31.1342}/>
+                                <Circle lat={teleport.x} lng={teleport.y}/>
 
                             </GoogleMapReact>
                         </div>
