@@ -127,13 +127,13 @@ function Map() {
                                 <div>
                                     <h4 className="text-center">Teleportation Devices</h4>
                                     <Button variant = "danger" size = "lg" onClick = { () => setTeleport({x: 39.773285, y: -86.174703})} block>IUPUI Campus</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.651668, y: -73.759698})} block>Albany, New York</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.604148, y: -122.325591})} block>Seattle, Washington</Button>
-                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.280555, y: -83.742496})} block>Ann Arbor Michigan</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.652289, y: -73.756066})} block>Albany, New York</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.605057, y: -122.331554})} block>Seattle, Washington</Button>
+                                    <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.279873, y: -83.742800})} block>Ann Arbor, Michigan</Button>
                                     <br/>
-                                    <Form block>
-                                            <FormControl type="text" placeholder="Longitude" required/>
-                                            <FormControl type="text" placeholder="Latitude" required/>
+                                    <Form onSubmit={() => {}} block>
+                                            <FormControl type="text" placeholder="Longitude" onChange={event => {setTeleport({x: event.target.value})}} required/>
+                                            <FormControl type="text" placeholder="Latitude" onChange={event => {setTeleport({y: event.target.value})}} required/>
                                             <br/>
                                             <Button variant="outline-success" type="submit">Teleport</Button>
                                     </Form>
@@ -142,7 +142,7 @@ function Map() {
                         </Row>
                     </Col>
                     <Col>
-                        <div style={{height: "600px", width: "600px"}}>
+                        <div style={{height: "20em", width: "20em", margin: "auto"}}>
                             <GoogleMapReact
                                 bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
                                 // defaultCenter = {[teleport.x, teleport.y]}
