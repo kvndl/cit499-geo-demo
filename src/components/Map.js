@@ -136,13 +136,14 @@ function Map() {
                                             <FormControl type="text" placeholder="Latitude" onChange={event => {setTeleport({y: event.target.value})}} required/>
                                             <br/>
                                             <Button variant="outline-success" type="submit">Teleport</Button>
+                                            <br/>
                                     </Form>
                                 </div>
                             </Col>
                         </Row>
                     </Col>
                     <Col>
-                        <div style={{height: "20em", width: "20em", margin: "auto"}}>
+                        <div style={{height: "600px", width: "600px", margin: "auto"}}>
                             <GoogleMapReact
                                 bootstrapURLKeys = {{key: process.env.REACT_APP_GMToken}}
                                 // defaultCenter = {[teleport.x, teleport.y]}
