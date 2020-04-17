@@ -20,6 +20,28 @@ function Map() {
     // hitbox color
     const [color, setColor] = React.useState("red");
 
+    // handle form data
+    const [formData, setFormData] = React.useState({
+        long: '',
+        lat: ''
+    })
+
+    const handleFormChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value.trim()
+        })
+    }
+
+    const updateFormData = (event) => {
+        event.preventDefault();
+        console.log(formData);
+        setTeleport({
+            x: formData.long,
+            y: formData.lat
+        })
+    }
+
     // map teleport
     const [teleport, setTeleport] = React.useState({
         x: 39.773309,
@@ -131,11 +153,11 @@ function Map() {
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 47.605057, y: -122.331554})} block>Seattle, Washington</Button>
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.279873, y: -83.742800})} block>Ann Arbor, Michigan</Button>
                                     <br/>
-                                    <Form onSubmit={() => {}} block>
-                                            <FormControl type="text" placeholder="Longitude" onChange={event => {setTeleport({x: event.target.value})}} required/>
-                                            <FormControl type="text" placeholder="Latitude" onChange={event => {setTeleport({y: event.target.value})}} required/>
+                                    <Form block>
+                                            <FormControl type="text" name="long" placeholder="Longitude" onChange={handleFormChange} required/>
+                                            <FormControl type="text" name="lat" placeholder="Latitude" onChange={handleFormChange} required/>
                                             <br/>
-                                            <Button variant="outline-success" type="submit">Teleport</Button>
+                                            <Button variant="outline-success" onClick={updateFormData}>Teleport</Button>
                                             <br/>
                                     </Form>
                                 </div>
