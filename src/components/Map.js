@@ -41,7 +41,6 @@ function Map() {
 
     const updateFormData = (event) => {
         event.preventDefault();
-        console.log(formData);
         setTeleport({
             x: formData.long,
             y: formData.lat
