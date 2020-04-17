@@ -26,6 +26,12 @@ function Map() {
         lat: ''
     })
 
+    // map teleport
+    const [teleport, setTeleport] = React.useState({
+        x: 39.773309,
+        y: -86.174698, 
+    });
+
     const handleFormChange = (event) => {
         setFormData({
             ...formData,
@@ -41,12 +47,6 @@ function Map() {
             y: formData.lat
         })
     }
-
-    // map teleport
-    const [teleport, setTeleport] = React.useState({
-        x: 39.773309,
-        y: -86.174698, 
-    });
 
     // mapbox viewport
     // const [viewport, setViewport] = React.useState({
