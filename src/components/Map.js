@@ -73,7 +73,7 @@ function Map() {
         setPosition({
             x: coords.longitude.toFixed(5),
             y: coords.latitude.toFixed(5),
-            z: coords.altitude,
+            z: coords.altitude.toFixed(5),
             accuracy: coords.accuracy
         });
 
@@ -134,7 +134,7 @@ function Map() {
                                     <p>Longitude: {position.x === null ? "Unable to locate" : position.x}</p>
                                     <p>Latitude: {position.y === null ? "Unable to locate" : position.y}</p> 
                                     <p>Accuracy: {position.accuracy === null ? "No accuracy info" : position.accuracy}</p>
-                                    <p>Altitude: {position.altitude === null ? "No altitude info" : position.altitude}</p>
+                                    <p>Altitude: {position.altitude}</p>
 
                                     {error}
 
