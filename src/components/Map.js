@@ -153,8 +153,8 @@ function Map() {
                                     <Button variant = "primary" size = "lg" onClick = { () => setTeleport({x: 42.279873, y: -83.742800})} block>Ann Arbor, Michigan</Button>
                                     <br/>
                                     <Form block>
-                                            <FormControl type="text" name="long" placeholder="Longitude" onChange={handleFormChange} required/>
-                                            <FormControl type="text" name="lat" placeholder="Latitude" onChange={handleFormChange} required/>
+                                            <FormControl type="number" name="long" placeholder="Longitude" onChange={handleFormChange} required/>
+                                            <FormControl type="number" name="lat" placeholder="Latitude" onChange={handleFormChange} required/>
                                             <br/>
                                             <Button variant="outline-success" onClick={updateFormData}>Teleport</Button>
                                             <br/>
