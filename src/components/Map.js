@@ -35,7 +35,7 @@ function Map() {
     const handleFormChange = (event) => {
         setFormData({
             ...formData,
-            [event.target.name]: event.target.value.trim()
+            [event.target.name]: event.target.value
         })
     }
 
